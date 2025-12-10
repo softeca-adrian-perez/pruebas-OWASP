@@ -5,7 +5,7 @@ on:
 jobs:
   ci:
     name: CI
-    uses: softecainternet/template--github-actions/.github/workflows/ci.yml@features/dojo
+    uses: softecainternet/template--github-actions/.github/workflows/ci-dojo.yml@features/dojo
     permissions:
       contents: read
       actions: write
