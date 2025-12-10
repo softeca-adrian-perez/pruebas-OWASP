@@ -1,0 +1,220 @@
+//Mixins
+
+@mixin primary
+{
+  background-color: var(--primary-color) !important;
+  color: $secondary-font-color;
+  *, .c-primary
+  {
+    color: $secondary-font-color !important;
+  }
+  .top-bar-section
+  {
+    a
+    {
+      background-color: var(--primary-color) !important;
+      color: $secondary-font-color !important;
+    }
+  }
+  a
+  {
+    color: $secondary-font-color;
+    &:hover
+    {
+      color: darken($secondary-font-color, 10%) !important;
+      text-decoration: underline !important;
+      *
+      {
+        color: darken($secondary-font-color, 10%) !important;
+        text-decoration: underline !important;
+      }
+    }
+  }
+  .active
+  {
+    a
+    {
+      background-color: var(--secondary-color) !important;
+      color: var(--primary-font-color) !important;
+    }
+  }
+}
+@mixin secondary
+{
+  background-color: var(--secondary-color);
+  color: var(--primary-font-color);
+  *, .c-secondary
+  {
+    color: var(--primary-font-color) !important;
+  }
+  .top-bar-section
+  {
+    a
+    {
+      background-color: var(--secondary-color) !important;
+      color: var(--primary-font-color) !important;
+    }
+  }
+  a
+  {
+    color: var(--primary-font-color);
+    &:hover
+    {
+      color: darken($primary-font-color, 10%) !important;
+      text-decoration: underline !important;
+      *
+      {
+        color: darken($primary-font-color, 10%) !important;
+        text-decoration: underline !important;
+      }
+    }
+  }
+  .active
+  {
+    a
+    {
+      background-color: var(--primary-color) !important;
+      color: $secondary-font-color !important;
+    }
+  }
+}
+@mixin transicion{transition: all .5s ease-in-out;}
+@mixin sin-transicion{transition: 0s;}
+@mixin degradado-vertical($color-uno, $color-dos)
+{
+  background: $color-uno;
+  background: -moz-linear-gradient(top, $color-uno 0%, $color-dos 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color-uno), color-stop(100%, $color-dos));
+  background: -webkit-linear-gradient(top, $color-uno 0%, $color-dos 100%);
+  background: -o-linear-gradient(top, $color-uno 0%, $color-dos 100%);
+  background: -ms-linear-gradient(top, $color-uno 0%, $color-dos 100%);
+  background: linear-gradient(top, $color-uno 0%, $color-dos 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color-uno", endColorstr="$color-dos", GradientType=0);
+}
+@mixin degradado-horizontal($color-uno, $color-dos)
+{
+  background: $color-uno;
+  background: -moz-linear-gradient(left, $color-uno 0%, $color-dos 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, $color-uno), color-stop(100%, $color-dos));
+  background: -webkit-linear-gradient(left, $color-uno 0%, $color-dos 100%);
+  background: -o-linear-gradient(left, $color-uno 0%, $color-dos 100%);
+  background: -ms-linear-gradient(left, $color-uno 0%, $color-dos 100%);
+  background: linear-gradient(left, $color-uno 0%, $color-dos 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color-uno", endColorstr="$color-dos", GradientType=1);
+}
+@mixin degradado-diagonal-uno($color-uno, $color-dos)
+{
+  background: $color-uno;
+  background: -moz-linear-gradient(-45deg, $color-uno 0%, $color-dos 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, $color-uno), color-stop(100%, $color-dos));
+  background: -webkit-linear-gradient(-45deg, $color-uno 0%, $color-dos 100%);
+  background: -o-linear-gradient(-45deg, $color-uno 0%, $color-dos 100%);
+  background: -ms-linear-gradient(-45deg, $color-uno 0%, $color-dos 100%);
+  background: linear-gradient(135deg, $color-uno 0%, $color-dos 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color-uno", endColorstr="$color-dos", GradientType=1);
+}
+@mixin degradado-diagonal-dos($color-uno, $color-dos)
+{
+  background: $color-uno;
+  background: -moz-linear-gradient(-5deg, $color-uno 0%, $color-dos 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, $color-uno), color-stop(100%, $color-dos));
+  background: -webkit-linear-gradient(45deg, $color-uno 0%, $color-dos 100%);
+  background: -o-linear-gradient(45deg, $color-uno 0%, $color-dos 100%);
+  background: -ms-linear-gradient(45deg, $color-uno 0%, $color-dos 100%);
+  background: linear-gradient(45deg, $color-uno 0%, $color-dos 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color-uno", endColorstr="$color-dos", GradientType=1);
+}
+@mixin degradado-radial($color-uno, $color-dos)
+{
+  background: $color-uno;
+  background: -moz-linear-gradient(center, ellipse cover, $color-uno 0%, $color-dos 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $color-uno), color-stop(100%, $color-dos));
+  background: -webkit-linear-gradient(center, ellipse cover, $color-uno 0%, $color-dos 100%);
+  background: -o-linear-gradient(center, ellipse cover, $color-uno 0%, $color-dos 100%);
+  background: -ms-linear-gradient(center, ellipse cover, $color-uno 0%, $color-dos 100%);
+  background: linear-gradient(ellipse at center, $color-uno 0%, $color-dos 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color-uno", endColorstr="$color-dos", GradientType=1);
+}
+@mixin titulo
+{
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+@mixin redondeado
+{
+  border-radius: $radio-del-borde;
+}
+@mixin cuadriculado
+{
+  border-radius: 0;
+}
+
+@mixin boton
+{
+  // font-family: $font-family;
+  // background-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: $secondary-font-color;
+  margin: 0;
+  line-height: 1.3em;
+  // border: none !important;
+  // box-shadow: 0 0 0;
+  //text-transform: uppercase;
+  // min-height: 2em;
+  // padding: 12px 12px 12px 12px;
+  // font-weight: bold;
+  // border-radius: 10px;
+  // display: inline-block;
+  // font-size: 13px;
+  // margin: 0 1em 0 0;
+  // @include transicion;
+  // &:hover
+  // {
+  //   background-color: lighten($primary-color, 10%);
+  //   color: $secondary-font-color;
+  // }
+  // &:active
+  // {
+  //   background-color: lighten($primary-color, 10%);
+  //   color: $secondary-font-color;
+  //   box-shadow: 0 0 10px #000;
+  // }
+  // &:focus
+  // {
+  //   color: $secondary-font-color;
+  //   box-shadow: 0 0 10px #000;
+  //   background-color: var(--primary-color);
+  // }
+}
+
+@mixin exito{@extend .exito;}
+@mixin fallo{@extend .fallo;}
+@mixin informacion{@extend .informacion;}
+
+@mixin color-placeholder($color)
+{
+  ::-webkit-input-placeholder
+  { // WebKit, Blink, Edge
+    color:    $color;
+  }
+  :-moz-placeholder
+  { // Mozilla Firefox 4 to 18
+    color:    $color;
+    opacity:  1;
+  }
+  ::-moz-placeholder
+  { // Mozilla Firefox 19+
+    color:    $color;
+    opacity:  1;
+  }
+  :-ms-input-placeholder
+  { // Internet Explorer 10-11
+    color:    $color;
+  }
+  :placeholder-shown
+  { // Standard (https://drafts.csswg.org/selectors-4/#placeholder)
+    color:    $color;
+  }
+}

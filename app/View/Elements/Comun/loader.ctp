@@ -1,0 +1,14 @@
+<div class="preloader">
+    <div class="spinner">
+        <img src="/img/AllianceAutomotiveGroup.png" alt="GNM AAG">
+        <br>
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+        <div class="rect6"></div>
+        <div class="rect7"></div>
+        <div class="rect8"></div>
+    </div>
+</div>

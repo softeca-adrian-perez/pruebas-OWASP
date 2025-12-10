@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Allow: /users/privacy_notice
+Crawl-delay: 120

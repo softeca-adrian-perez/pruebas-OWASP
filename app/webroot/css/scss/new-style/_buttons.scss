@@ -1,0 +1,297 @@
+.swal-button,
+.swal-button.swal-button--confirm.btn_confirm,
+.swal-button.swal-button--cancel.btn_cancel,
+.aag-button,
+a.aag-button,
+div.aag-button,
+span.aag-button,
+input.aag-button,
+button.aag-button,
+ul.aag-tabs li a,
+// button.aag-button,
+input[type="submit"].aag-button,
+html > body > div#container .aag-button,
+html > body > div#container a.aag-button,
+html > body > div#container div.aag-button,
+html > body > div#container span.aag-button,
+html > body > div#container input.aag-button,
+html > body > div#container button.aag-button,
+html > body > div#container input[type="submit"].aag-button,
+html > body > div#container button.fc-button {
+    color: #fff;
+    cursor: pointer;
+    line-height: 1.1;
+    font-weight: 500;
+    border-width: 3px;
+    text-align: center;
+    margin-left: 7.5px;
+    border-style: solid;
+    align-items: center;
+    margin-right: 7.5px;
+    display: inline-flex;
+    box-sizing: border-box;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+    gap: 5px;
+    font-size: 1.2rem;
+    padding: 3px 7.5px;
+    border-radius: 7.5px;
+    box-shadow: none;
+    font-family: 'Poppins', sans-serif;
+    a { color: inherit; }
+    &.mr-auto { margin-right: auto; }
+    > ion-icon, > span.icon { font-size: 1.7rem; }
+    &:first-child {
+        margin-left: 0;
+        &.mr-auto { margin-right: auto; }
+    }
+    &:last-child {
+        margin-right: 0;
+        &.mr-auto { margin-right: auto; }
+    }
+    &.vertical { flex-direction: column; }
+    &.small {
+        gap: 5px;
+        font-size: 1.3rem;
+        min-height: 30px;
+        padding: 3px 7.5px;
+        border-radius: 10px;
+        > ion-icon, > span.icon { font-size: 2.2rem; }
+        @media(max-width: $stepThree) {
+            font-size: 1.2rem;
+            min-height: 25px;
+            padding: 2px 5px;
+            > ion-icon, > span.icon { font-size: 1.8rem; }
+        }
+    }
+    &.medium, &.swal-button {
+        gap: 5px 10px;
+        font-size: 1.5rem;
+        min-height: 45px;
+        padding: 4px 15px;
+        border-radius: 15px;
+        > ion-icon, > span.icon { font-size: 2.6rem; }
+        @media(max-width: $stepThree)
+        {
+            gap: 4px 7px;
+            font-size: 1.3rem;
+            min-height: 35px;
+            padding: 3px 10px;
+            > ion-icon, > span.icon { font-size: 2.2rem; }
+        }
+    }
+    &.large {
+        gap: 10px 15px;
+        font-size: 1.8rem;
+        min-height: 60px;
+        padding: 10px 30px;
+        border-radius: 15px;
+        > ion-icon, > span.icon { font-size: 3rem; }
+        @media(max-width: $stepThree)
+        {
+            gap: 5px 10px;
+            font-size: 1.5rem;
+            min-height: 40px;
+            padding: 5px 15px;
+            border-radius: 15px;
+            > ion-icon, > span.icon { font-size: 2.6rem; }
+        }
+    }
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    &.outlined svg path { fill: var(--primary-color); }
+    &.ghost {
+        opacity: .5;
+        cursor: no-drop;
+        pointer-events: none;
+        filter: saturate(75%);
+    }
+    &.outlined:not(.filled), &.ghost:not(.filled) { color: var(--primary-color); }
+    &.one {
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
+        color: var(--primary-font-color);
+        &.outlined:not(.filled), &.ghost:not(.filled) {
+            background-color: var(--primary-font-color);
+            color: var(--primary-color);
+        }
+        &.outlined:has(input[type="radio"]:checked) {
+            background-color: var(--primary-color);
+            color: var(--primary-font-color);
+        }
+    }
+    &.two {
+        border-color: var(--secondary-color);
+        background-color: var(--secondary-color);
+        color: var(--secondary-font-color);
+        &.outlined:not(.filled), &.ghost:not(.filled) {
+            background-color: var(--secondary-font-color);
+            color: var(--secondary-color);
+        }
+        &.outlined:has(input[type="radio"]:checked) {
+            background-color: var(--secondary-color);
+            color: var(--secondary-font-color);
+        }
+    }
+    &.three {
+        border-color: var(--tertiary-color);
+        background-color: var(--tertiary-color);
+        color: var(--tertiary-font-color);
+        &.outlined:not(.filled), &.ghost:not(.filled) {
+            background-color: var(--tertiary-font-color);
+            color: var(--tertiary-color);
+        }
+        &.outlined:has(input[type="radio"]:checked) {
+            background-color: var(--tertiary-color);
+            color: var(--tertiary-font-color);
+        }
+    }
+    &.four {
+        border-color: var(--quaternary-color);
+        background-color: var(--quaternary-color);
+        color: var(--quaternary-font-color);
+        &.outlined:not(.filled), &.ghost:not(.filled) {
+            background-color: var(--quaternary-font-color);
+            color: color-mix(in srgb, var(--quaternary-color),#000 25%);
+        }
+        &.outlined:has(input[type="radio"]:checked) {
+            background-color: var(--quaternary-color);
+            color: var(--quaternary-font-color);
+        }
+    }
+    &.outlined:not(.filled).border-one, &.border-one { border-color: var(--primary-color); }
+    &.outlined:not(.filled).border-two, &.border-two { border-color: var(--secondary-color); }
+    &.outlined:not(.filled).border-three, &.border-three { border-color: var(--tertiary-color); }
+    &.outlined:not(.filled).border-four, &.border-four { border-color: var(--quaternary-color); }
+    &.green, &.swal-button--confirm, &.swal-button--confirm.btn_confirm {
+        border-color: var(--success-color);
+        background-color: var(--success-color);
+        &.outlined:not(.filled), &.ghost:not(.filled), &.outlined:not(.filled):not(.no-click):hover {
+            color: var(--success-color);
+            background-color: var(--container-color);
+        }
+    }
+    &.red, &.swal-button--cancel, &.swal-button--cancel.btn_cancel {
+        border-color:  var(--error-color);
+        background-color: var(--error-color);
+        &.outlined:not(.filled), &.ghost:not(.filled), &.outlined:not(.filled):not(.no-click):hover {
+            color: var(--error-color);
+            background-color: var(--container-color);
+        }
+    }
+    &.orange {
+        border-color:  var(--information-color);
+        background-color: var(--information-color);
+        &.outlined:not(.filled), &.ghost:not(.filled), &.outlined:not(.filled):not(.no-click):hover {
+            color: var(--information-color);
+            background-color: var(--container-color);
+        }
+    }
+    &.dotted { border-style: dotted; }
+    &.dashed { border-style: dashed; }
+    &.ghost:not(.filled) { background-color: #f8f8f8; }
+    &:not(.no-click):hover { box-shadow: 0 0 15px #a6a6a6; }
+    &.no-click { cursor: unset; }
+    > div, > span, > p, > ion-icon, > span.icon, > i {
+        margin: 0;
+        top: unset;
+        left: unset;
+        right: unset;
+        bottom: unset;
+        color: inherit;
+        position: unset;
+    }
+    > ion-icon, > span.icon {
+        display: flex;
+        line-height: 1;
+        margin: -2px 0;
+        pointer-events: none;
+    }
+    &.m-left-1 { margin-left: 1rem; }
+    &.m-right-1 { margin-right: 1rem; }
+    &.d-none { display: none !important; }
+    &.swal-button { margin: 0  10px !important; }
+    &.one > span:not(.icon), &.two > span:not(.icon), &.three > span:not(.icon), &.green > span:not(.icon), &.red > span:not(.icon), &.orange > span:not(.icon) { color: inherit !important; }
+    > span.button-ammount {
+        color: var(--primary-color);
+        &.red { color:  var(--error-color) !important; }
+        &.orange { color:  var(--information-color) !important; }
+        &.green { color: var(--success-color) !important; }
+    }
+    &.outlined {
+        > span.button-ammount { border-color: inherit; }
+        &:hover > span.button-ammount:not(.green):not(.red):not(.orange) { color: inherit !important; }
+    }
+    &.m-0 { margin: 0; }
+}
+html > body > div#container button.fc-button {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    background-color: #fff !important;
+    &.fc-state-active
+    {
+        color: #fff !important;
+        border-color: var(--primary-color) !important;
+        background-color: var(--primary-color) !important;
+    }
+    &.fc-newEvent-button
+    {
+        color: var(--success-color) !important;
+        border-color: var(--success-color) !important;
+        background-color: #fff !important;
+    }
+}
+.aag-tabs, ul.aag-tabs, html > body > div#container .aag-tabs, html > body > div#container ul.aag-tabs, html > body .aag-tabs, html > body ul.aag-tabs {
+    .aag-button.active, .active > .aag-button, > li.active > a.aag-button, .aag-button.active, .active > .aag-button, > li.active > a.aag-button {
+        color: #fff;
+        background-color: var(--primary-color);
+        svg path { fill: #fff; }
+        &.one.outlined {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+        }
+        &.two.outlined {
+            border-color: var(--secondary-color);
+            background-color: var(--secondary-color);
+        }
+        &.three.outlined {
+            border-color: var(--tertiary-color);
+            background-color: var(--tertiary-color);
+        }
+        &.four.outlined {
+            border-color: var(--quaternary-color);
+            background-color: var(--quaternary-color);
+        }
+        &.green.outlined {
+            border-color: var(--success-color);
+            background-color: var(--success-color);
+        }
+        &.red.outlined {
+            border-color:  var(--error-color);
+            background-color: var(--error-color);
+        }
+        &.orange.outlined {
+            border-color:  var(--information-color);
+            background-color: var(--information-color);
+        }
+    }
+}
+// .aag-button.two.outlined > span { filter: brightness(.7); }
+
+.aag-switch input{
+    opacity: 0;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    padding: 0;
+}
+
+body .clean-button {
+	background: none;
+	border: none;
+	display: flex;
+	line-height: 1;
+	span {
+		margin: auto 0;
+	}
+}

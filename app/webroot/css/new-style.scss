@@ -1,0 +1,15 @@
+// Variables para el responsive de la estructura de la web y de la cabecera.
+$stepOne: 1900px;
+$stepTwo: 1650px;
+$stepThree: 1450px;
+$stepFour: 1000px;
+
+@import 'scss/new-style/reset';
+@import 'scss/new-style/normalize';
+@import 'scss/new-style/layout';
+@import 'scss/new-style/header';
+@import 'scss/new-style/modules';
+@import 'scss/new-style/buttons';
+@import 'scss/new-style/tables';
+@import 'scss/new-style/icons';
+@import 'scss/new-style/login';

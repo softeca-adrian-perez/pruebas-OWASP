@@ -1,0 +1,23 @@
+#https://github.com/garygitton/dockerignore/blob/master/README.md
+
+# Common
+README.md
+CHANGELOG.md
+docker-compose.yml
+Dockerfile
+
+# git
+.git
+.gitattributes
+.gitignore
+
+# CakePHP 2
+# Temporales
+/app/tmp/*
+/app/tmp/cache/*
+/app/tmp/cache/sessions/*
+/app/tmp/cache/logs/*
+# Account Storage (appfiles)
+/app/files/*
+# Account Storage (appwebrootfiles)
+/app/webroot/files/*

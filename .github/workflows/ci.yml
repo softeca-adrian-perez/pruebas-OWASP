@@ -1,0 +1,14 @@
+name: CI
+on:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: CI
+    uses: softecainternet/template--github-actions/.github/workflows/ci.yml@features/dojo
+    permissions:
+      contents: read
+      actions: write
+    with:
+      src_repo: ${{ github.repository }}
+    secrets: inherit

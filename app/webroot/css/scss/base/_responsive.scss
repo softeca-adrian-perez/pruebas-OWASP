@@ -1,0 +1,10 @@
+//Ejemplo de uso: @media #{$small-max}{Estilos para dispositivo pequeño.}
+@media #{$small-max}
+{
+  .cc-1-movil
+  {
+    column-count: 1;
+    -webkit-column-count: 1;
+    -moz-column-count: 1 !important;
+  }
+}

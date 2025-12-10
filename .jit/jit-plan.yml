@@ -1,0 +1,19 @@
+name: My plan
+level: beginner
+update_id: 2a0db165-0baa-4798-8d60-5e00c0bbfe63
+author: Jit
+version: 0.1
+owners:
+  default: null
+references:
+  - https://www.jit.io
+tags: []
+items:
+  - name: Scan your code for vulnerabilities (SAST)
+    uses: jitsecurity-controls/jit-plans/items/code/item-code-vulnerability.yml@latest
+  - name: Scan your code dependencies for vulnerabilities (SCA)
+    uses: jitsecurity-controls/jit-plans/items/code/item-dependency-check.yml@latest
+  - name: Verify that MFA for your GitHub organization is enabled
+    uses: jitsecurity-controls/jit-plans/items/third_party_app/item-mfa-scm.yml@latest
+  - name: Scan code for hard-coded secrets
+    uses: jitsecurity-controls/jit-plans/items/code/item-secret-detection.yml@latest

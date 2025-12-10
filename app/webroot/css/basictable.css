@@ -1,0 +1,117 @@
+/*
+ * jQuery Basic Table
+ * Author: Jerry Low
+ */
+
+table.bt thead,
+table.bt tbody th {
+  display: none;
+}
+
+table.bt tfoot th,
+table.bt tfoot td,
+table.bt tbody td {
+  border: none;
+  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  vertical-align: top;
+
+  /* IE 9 */
+  float: left\9;
+  width: 100%\9;
+}
+
+table.bt tfoot th::before,
+table.bt tfoot td::before,
+table.bt tbody td::before {
+  /*content: attr(data-th) ": ";*/
+  content: attr(data-th);
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+  width: 9.5em;
+  color: #7d9bb1 !important;
+  text-align: left !important;
+}
+
+table.bt tfoot th.bt-hide,
+table.bt tfoot td.bt-hide,
+table.bt tbody td.bt-hide {
+  display: none;
+}
+
+table.bt tfoot th .bt-content,
+table.bt tfoot td .bt-content,
+table.bt tbody td .bt-content {
+  vertical-align: top;
+}
+
+.bt-wrapper.active {
+  max-height: 310px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+
+@media only screen and (max-width: 640px)
+{
+  table.bt tfoot th::before,
+  table.bt tfoot td::before,
+  table.bt tbody td::before
+  {
+    padding: 9px 5px 9px 5px;
+    margin: -8px 5px -9px -10px;
+    background: #f8f8f8;
+  }
+  table.bt tr td:first-of-type
+  {
+    background: #dff1f7;
+  }
+  table.bt tr td:first-of-type, table.bt tr:nth-of-type(2n+2) td:first-of-type, table.bt tr td:first-of-type:before, table.bt tr.link-js td:first-of-type
+  {
+    background: #9ea4b2 !important;
+    color: #ffffff !important;
+  }
+  table.bt tr td:first-of-type span.bt-content
+  {
+    color: #ffffff !important;
+  }
+  table.bt tr td:first-of-type
+  {
+    border-top: 1px solid #e4ebeb;
+    /*border-bottom: 1px solid #e4ebeb;*/
+    vertical-align: top;
+  }
+  table.bt tr td:first-of-type *
+  {
+    color: #fff !important;
+    display: block !important;
+    line-height: 1 !important;
+    text-align: left;
+    float: none !important;
+    width: 100% !important;
+  }
+  table.bt tr td:first-of-type br
+  {
+    display: none !important;
+  }
+  table.bt td.td-con-porcentaje span
+  {
+    width: 100%;
+    display: inline-block;
+    float: none;
+  }
+  /*.table-tracking tbody tr td*/
+  table.bt tbody tr td
+  {
+    background-color: #fff;
+  }
+}

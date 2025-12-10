@@ -1,0 +1,1 @@
+<?php echo $this->element('../Garages/Elements/form_dis_and_net_garage'); ?>

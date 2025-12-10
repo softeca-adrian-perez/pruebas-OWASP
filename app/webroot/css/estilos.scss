@@ -1,0 +1,46 @@
+@font-face
+{
+    font-family: "Roboto";
+    src: url("/css/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("/css/fonts/roboto/Roboto-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face
+{
+    font-family: "Roboto";
+    src: url("/css/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("/css/fonts/roboto/Roboto-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face
+{
+    font-family: "Roboto";
+    src: url("/css/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("/css/fonts/roboto/Roboto-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@import
+"scss/base/variables",
+"scss/base/media-queries",
+"scss/base/mixins",
+"scss/base/generales",
+"scss/base/elementos",
+"scss/base/letra",
+"scss/base/contenedores",
+"scss/base/otros",
+"scss/generales",
+"scss/cabecera",
+"scss/pie",
+"scss/login",
+"scss/menus",
+"scss/foundation",
+"scss/titulos-botones",
+"scss/externos",
+"scss/administracion",
+"scss/tablas",
+"scss/base/responsive",
+"scss/formularios",
+"scss/base/iconos";

@@ -1,0 +1,152 @@
+.contain-to-grid{
+  background: none;
+}
+
+.error{
+  input[type="text"],
+  input[type="float"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="email"],
+  input[type="number"],
+  input[type="decimal"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea,
+  select{
+    border-color: #c60f13;
+    background-color: rgba(198, 15, 19, 0.1);
+    margin-bottom: 0.2em;
+    & + span.select2 span.select2-selection{
+      background-color: rgba(198, 15, 19, 0.1);
+    }
+  }
+  .error-message{
+    color: #c60f13;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+    font-style: italic;
+    top: 25px;
+  }
+}
+
+//Conflicto entre google maps y foundation
+
+.gm-style
+{
+  img, object, embed
+  {
+    max-width: none !important;
+  }
+}
+.row, .contain-to-grid .top-bar
+{
+  max-width: $ancho-maximo;
+}
+//Menu movil fijo.
+.off-canvas-fixed
+{
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  margin-bottom: 45px;
+}
+.move-right > .off-canvas-fixed
+{
+  height: 100%;
+  -webkit-transform: translate3d(15.625rem, 0, 0);
+  transform: translate3d(15.625rem, 0, 0);
+}
+.left-off-canvas-menu
+{
+  -webkit-transform: none;
+  transform: none;
+  margin-left: -15.625rem;
+}
+a.exit-off-canvas
+{
+  background: rgba(0,0,0,.5) !important;
+  z-index: 0 !important;
+}
+aside.left-off-canvas-menu, .tab-bar
+{
+  z-index: 1;
+}
+#menu-movil
+{
+  height: 45px;
+  width: 100%;
+}
+aside.left-off-canvas-menu
+{
+  height: 100% !important;
+  ul.off-canvas-list
+  {
+    display: inline-block;
+    width: 100%;
+  }
+}
+//Retoques en el sistema de checkbox y radio buttons personalizados.
+.switchContainer
+{
+  .switch
+  {
+    float: left;
+    margin-right: 1em;
+  }
+  .switchLabel
+  {
+    display: block !important;
+    float: left;
+    margin-top: .35em;
+    &.small
+    {
+      margin-top: .20em;
+    }
+    &.large
+    {
+      margin-top: .65em;
+    }
+  }
+}
+.switch
+{
+  display: inline-block;
+  label
+  {
+    display: inline-block !important;
+    float: left;
+    background-color: $color-borde-elementos;
+  }
+  input:checked + label
+  {
+    background-color: var(--primary-color);
+  }
+}
+form.custom .custom.dropdown.combo .current
+{
+  display: block !important;
+  width: 95% !important;
+  height: 100% !important;
+  margin: 0 0 0 0.5em !important;
+}
+.datepicker input[type="text"]
+{
+  display: inline;
+  margin-right: -1.5em;
+  //width: 75%;
+  //max-width: 8em !important;
+}
+.checkbox
+{
+  label{display: inline-block;}
+}
+.top-bar-section ul li > a
+{
+  font-family: $font-family;
+}

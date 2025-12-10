@@ -1,0 +1,38 @@
+#header.fixed{position: static !important;}
+.left-off-canvas-menu, .exit-off-canvas, header#header-movil.show-for-small{
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/*Tabla de cabecera fija*/
+.tabla-head-fijo > section{
+    position: static;
+    padding-top: 0;
+    background: none;
+}
+.tabla-head-fijo > section > div{
+    overflow: auto;
+    max-height: none;
+}
+.tabla-head-fijo > section > div table{
+    font-size: 13px !important;
+    margin-top: 0 !important;
+}
+.tabla-head-fijo > section > div table *{
+    font-size: 13px !important;
+}
+.tabla-head-fijo > section > div table thead tr th{
+    height: auto;
+    line-height: normal;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #000;
+    border: none;
+    white-space: nowrap;
+}
+.tabla-head-fijo > section > div table thead tr th div{display: none;}
+.tabla-head-fijo > section > div table thead tr th:first-child div{border: none;}
+.tabla-head-fijo > section > div table td + td{border: none;}
+.tabla-head-fijo > section > div table td, .tabla-head-fijo > section > div table th{padding: 10px 5px;}
+/*Fin de tabla de cabecera fija*/

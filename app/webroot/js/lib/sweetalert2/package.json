@@ -1,0 +1,144 @@
+{
+  "name": "sweetalert2",
+  "version": "7.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limonte/sweetalert2.git"
+  },
+  "homepage": "https://limonte.github.io/sweetalert2/",
+  "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "main": "dist/sweetalert2.all.js",
+  "jsnext:main": "src/sweetalert2.js",
+  "types": "sweetalert2.d.ts",
+  "devDependencies": {
+    "babel-core": "latest",
+    "babel-plugin-array-includes": "latest",
+    "babel-plugin-external-helpers": "latest",
+    "babel-plugin-transform-object-assign": "latest",
+    "babel-preset-es2015": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-rename": "latest",
+    "gulp-rollup": "latest",
+    "gulp-sass": "latest",
+    "gulp-sass-lint": "latest",
+    "gulp-standard": "^8.0.0",
+    "gulp-tslint": "^8.1.2",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "latest",
+    "rollup": "latest",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-css-only": "^0.2.0",
+    "standard": "^8.0.0",
+    "testem": "latest",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3",
+    "uglify-js": "latest"
+  },
+  "standard": {
+    "ignore": [
+      "dist/"
+    ],
+    "global": [
+      "MutationObserver"
+    ]
+  },
+  "files": [
+    "dist",
+    "src",
+    "sweetalert2.d.ts"
+  ],
+  "author": {
+    "name": "Limon Monte",
+    "email": "limon.monte@gmail.com",
+    "url": "https://limonte.github.io"
+  },
+  "contributors": [
+    {
+      "name": "Morgan Touverey-Quilling",
+      "email": "mtouverey@alembic-dev.com",
+      "url": "https://github.com/toverux"
+    },
+    {
+      "name": "Johan Fagerberg",
+      "url": "https://github.com/birjolaxew"
+    },
+    {
+      "name": "Sam Turrell",
+      "email": "sam@samturrell.co.uk",
+      "url": "https://github.com/samturrell"
+    },
+    {
+      "name": "Joseph Schultz",
+      "url": "https://github.com/acupajoe"
+    },
+    {
+      "name": "Patrick H. Lauke",
+      "url": "https://github.com/patrickhlauke"
+    }
+  ],
+  "keywords": [
+    "sweetalert",
+    "sweetalert2",
+    "alert",
+    "prompt"
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "testem ci",
+    "lint-dts": "tslint sweetalert2.d.ts --format verbose",
+    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts",
+    "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
+    "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
+  },
+  "bugs": {
+    "url": "https://github.com/limonte/sweetalert2/issues"
+  },
+  "license": "MIT",
+  "gitHead": "63a1a498ffdfd29c50c33a17e3374e1143c56d9d",
+  "_id": "sweetalert2@7.0.0",
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.4",
+  "_npmUser": {
+    "name": "limonte",
+    "email": "limon.monte@gmail.com"
+  },
+  "dist": {
+    "integrity": "sha512-Qz4sL824Pb+Pwb47m3h0BAHq53dotFxHGuaQx83Z38L/Bv5cI1Z2ygh5Gf8QqsgPyQ/KEOb5t/zGmPmn5OqIcw==",
+    "shasum": "6e4214a72c3fd6cdbdc94b0b7bed61055a1af50f",
+    "tarball": "https://registry.npmjs.org/sweetalert2/-/sweetalert2-7.0.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "birjolaxew",
+      "email": "johanringmann@gmail.com"
+    },
+    {
+      "name": "jdcrensh",
+      "email": "jdcrensh@gmail.com"
+    },
+    {
+      "name": "limonte",
+      "email": "limon.monte@gmail.com"
+    },
+    {
+      "name": "samturrell",
+      "email": "sam@samturrell.co.uk"
+    },
+    {
+      "name": "toverux",
+      "email": "mtouverey@methodinthemadness.eu"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/sweetalert2-7.0.0.tgz_1510817843389_0.765240122564137"
+  },
+  "directories": {},
+  "_shasum": "6e4214a72c3fd6cdbdc94b0b7bed61055a1af50f",
+  "_resolved": "https://registry.npmjs.org/sweetalert2/-/sweetalert2-7.0.0.tgz",
+  "_from": "sweetalert2@latest"
+}

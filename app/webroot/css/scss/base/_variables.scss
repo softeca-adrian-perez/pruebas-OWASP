@@ -1,0 +1,33 @@
+//Variables
+
+$font-family: 'Roboto', sans-serif;
+$medida-de-referencia: 14px;
+
+$primary-color: #005F94;
+$primary-font-color: #303030;
+$primary-background-color: #FFFFFF;
+
+$secondary-color: #1FB1E1;
+$secondary-font-color: #606060;
+$secondary-background-color: #F5F5F5;
+
+$tertiary-color: #979EA4;
+
+$menu-color: #000000;
+$color-active: #29C9CE;
+$menu-background-color: #FFFFFF;
+
+$color-borde-elementos: #606060;
+$radio-del-borde: 1em;
+$color-exito: #75D282;
+$color-fallo: #FE472F;
+$color-informacion: #F27B4D;
+$color-disabled: #E7E7E7;
+$ancho-maximo: 200rem; //62.5rem es la medida estandar de foundation.
+
+$small-screen: 641px !default;
+$medium-screen: 1280px !default;
+$large-screen: 1440px !default;
+
+$input-color: #303030;
+$label-color: #606060;

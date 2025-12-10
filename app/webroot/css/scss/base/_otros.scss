@@ -1,0 +1,285 @@
+.titulo{@include titulo;}
+.titulo-primary
+{
+  @include titulo;
+  color: var(--primary-color);
+}
+.titulo-secondary
+{
+  @include titulo;
+  color: var(--secondary-color);
+}
+div.exito, div.robertastico, div.fallo, div.txematidico, div.informacion
+{
+  color: #fff;
+  padding: .5em 1em;
+  text-align: center;
+  *, label{color: #fff;}
+  div{font-weight: bold;}
+}
+//Elementos informativos, de exito y de error.
+div.exito
+{
+  background-color: var(--success-color);
+  border-color: darken($color-exito, 10%);
+}
+.c-exito, span[class^="aag-icon-"].c-exito, span[class*="aag-icon-"].c-exito {color: var(--success-color);}
+div.fallo
+{
+  background-color: var(--error-color);
+  border-color: darken($color-fallo, 10%);
+}
+.c-fallo, span[class^="aag-icon-"].c-fallo, span[class*="aag-icon-"].c-fallo {color: var(--error-color);}
+div.informacion, span[class^="aag-icon-"].informacion, span[class*="aag-icon-"].informacion
+{
+  background-color: var(--information-color);
+  border-color: darken($color-informacion, 10%);
+}
+.c-informacion{color: var(--information-color);}
+//Paginacion basica.
+
+.c-default{color: gainsboro;}
+
+.change_rows
+{
+  select
+  {
+    margin-bottom: 10px;
+  }
+  input[type="submit"]
+  {
+    margin-right: 0 !important;
+  }
+}
+.paginacion
+{
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2rem;
+  padding-top: 16px;
+  *
+  {
+    display: inline-block;
+    list-style: none;
+  }
+  li.prev, li.next
+  {
+    width: 28px;
+    text-align: center;
+    font-weight: normal !important;
+    line-height: 19px;
+    a
+    {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-weight: normal !important;
+    }
+  }
+  li.results
+  {
+    margin: 3px 0 0 20px;
+  }
+  .current
+  {
+    @include secondary;
+    display: inline-block;
+    height: 1.25rem;
+    min-width: 1.75rem;
+    line-height: 1.2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--primary-font-color);
+    font-weight: bold;
+  }
+  li
+  {
+    margin: .25rem 0;
+    float: left;
+    font-size: 14px;
+    border-left: 1px solid $color-borde-elementos;
+    background: none !important;
+    &:first-child, &:last-child
+    {
+      border: none;
+    }
+    a
+    {
+      @include primary;
+      float: left;
+      display: inline-block;
+      height: 1.25rem;
+      min-width: 1.75rem;
+      line-height: 1.2rem;
+      text-align: center;
+      font-size: 12px;
+      background: none !important;
+      color: var(--primary-color);
+    }
+  }
+}
+//Contenedor con enlaces de los colores principales
+.enlaces-primary
+{
+  a{@include primary;}
+  .active
+  {
+    @include secondary;
+    a{@include secondary;}
+  }
+}
+.enlaces-secondary
+{
+  a{@include secondary;}
+  .active
+  {
+    @include primary;
+    a{@include primary;}
+  }
+}
+//Resaltar las filas clicables de una tabla.
+tr.link-js td img
+{
+  margin: -5px;
+  border: 5px solid transparent;
+}
+tr.link-js:hover td
+{
+  background: var(--primary-color) !important;
+  cursor: pointer;
+  color: $secondary-font-color;
+  *{color: $secondary-font-color;}
+  .icon:hover, i:hover, a:hover, a:hover *
+  {
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+  img
+  {
+    //filter: brightness(1000%);
+    background-color: #fff;
+    @include transicion;
+    border-color: #fff;
+  }
+  td.no-link-js{cursor: default;}
+}
+tr.without_link_js:hover td{cursor: default !important;}
+tr.link-js-alert:hover td
+{
+  background: white !important;
+  cursor: pointer;
+  color: black;
+  *{color: black;}
+  .icon:hover, i:hover, a:hover, a:hover *
+  {
+    color: black;
+    cursor: pointer;
+  }
+  img
+  {
+    //filter: brightness(1000%);
+    background-color: #fff;
+    @include transicion;
+    border-color: #fff;
+  }
+  td.no-link-js{cursor: default;}
+}
+
+
+.delete-contact:hover {
+  color: red;
+  cursor: pointer;
+}
+//Flechas sencillas
+.flecha
+{
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  &.arriba
+  {
+    border-left: 1em solid transparent !important;
+    border-right: 1em solid transparent !important;
+    border-bottom: 1em solid var(--primary-color);
+  }
+  &.derecha
+  {
+    border-top: 1em solid transparent !important;
+    border-bottom: 1em solid transparent !important;
+    border-left: 1em solid var(--primary-color);
+  }
+  &.abajo
+  {
+    border-left: 1em solid transparent !important;
+    border-right: 1em solid transparent !important;
+    &.disabled
+      {
+        border-top: 1em solid gray;
+        cursor: not-allowed;
+      }
+    &.not-disabled
+    {
+      border-top: 1em solid var(--primary-color);
+    }
+  }
+  &.izquierda
+  {
+    border-top: 1em solid transparent !important;
+    border-bottom: 1em solid transparent !important;
+    border-right: 1em solid var(--primary-color);
+  }
+}
+//Sistema para abrir y cerrar en acordeon en los buscadores avanzados.
+.contenedor-ampliaciones
+{
+  .abrir-todos, .cerrar-todos
+  {
+    color: $secondary-font-color;
+  }
+}
+.ampliar
+{
+  margin-bottom: 1px;
+  .mostrar-ampliado > .columns > div
+  {
+    //background-color: $color-borde-elementos;
+    //padding: .5em 0.9375rem;
+    cursor: pointer;
+    .flecha
+    {
+      float: right;
+      margin-top: .15rem;
+      border-color: $secondary-font-color;
+    }
+  }
+  .ampliacion > .row
+  {
+    padding: .5em 0.9375rem;
+  }
+}
+#boton-subir-cabecera
+{
+  display: none;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  bottom: 1.5em;
+  width: 3em;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  position: fixed;
+  right: 1.5em;
+  z-index: 999;
+  cursor: pointer;
+  div
+  {
+    padding-top: 22px;
+  }
+  span
+  {
+    line-height: 1;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    margin-top: -22px;
+  }
+}

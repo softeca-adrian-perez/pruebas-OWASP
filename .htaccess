@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	# Uncomment if you have a .well-known directory in the root folder, e.g. for the Let's Encrypt challenge
+	# https://tools.ietf.org/html/rfc5785
+	#RewriteRule ^(\.well-known/.*)$ $1 [L]
+	RewriteRule ^$ app/webroot/ [L]
+	RewriteRule (.*) app/webroot/$1 [L]
+</IfModule>
+	
+<IfModule mod_headers.c>
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    # Header always set Content-Security-Policy "default-src 'self'; font-src *;img-src * data:; script-src *; style-src *;"
+	Header always set Content-Security-Policy "default-src 'self'; connect-src *; font-src *; frame-src *; img-src * data:; media-src *; object-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';"
+    Header always set Referrer-Policy "same-origin"
+	Header always set Feature-Policy "accelerometer 'none'; camera 'self'; geolocation 'self'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'"
+</IfModule>
