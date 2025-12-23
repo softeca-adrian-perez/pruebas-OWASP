@@ -1,0 +1,212 @@
+
+name: OWASP Dependency-Check
+
+on:
+  workflow_call:
+    inputs:
+      src_repo:
+        required: true
+        type: string
+      src_repo_slug:
+        required: true
+        type: string
+      scan_branch:
+        required: false
+        type: string
+        default: "develop"
+    secrets:
+      GH_APP_ID:
+        required: true
+      GH_APP_PRIVATE_KEY:
+        required: true
+      DD_URL:
+        required: true
+      DD_TOKEN:
+        required: true
+
+jobs:
+  dependency-check-scan:
+    name: OWASP Dependency-Check Analysis
+    runs-on: sftk
+    timeout-minutes: 20
+
+    steps:
+    
+    - name: Parse repository name
+      id: repo-parser
+      run: |
+        echo "owner=$(echo ${{ inputs.src_repo }} | cut -d'/' -f1)" >> $GITHUB_OUTPUT
+        echo "name=$(echo ${{ inputs.src_repo }} | cut -d'/' -f2)" >> $GITHUB_OUTPUT
+
+  
+    - name: Generate token for source repo
+      id: source-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ secrets.GH_APP_ID }}
+        private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+        owner: ${{ steps.repo-parser.outputs.owner }}
+        repositories: ${{ steps.repo-parser.outputs.name }}
+
+    
+    - name: Prepare workspace
+      id: prepare-workdir
+      run: |
+        WORKDIR=$(mktemp -d "$RUNNER_TEMP/dc-workdir-XXXXXX")
+        echo "workdir=$WORKDIR" >> $GITHUB_OUTPUT
+        echo "Prepared workdir: $WORKDIR"
+
+   
+    - name: Download source code artifact
+      id: dl-artifact
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: source-code-${{ inputs.src_repo_slug }}
+        path: ${{ steps.prepare-workdir.outputs.workdir }}
+
+    
+    - name: Fallback checkout (if artifact missing)
+      if: steps.dl-artifact.outcome == 'failure'
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.src_repo }}
+        ref: ${{ inputs.scan_branch }}
+        token: ${{ steps.source-token.outputs.token }}
+        path: ${{ steps.prepare-workdir.outputs.workdir }}
+
+    
+    - name: Ensure sources present
+      run: |
+        set -euo pipefail
+        WORKDIR="${{ steps.prepare-workdir.outputs.workdir }}"
+        echo "Listing $WORKDIR ..."
+        ls -la "$WORKDIR" || true
+        if [ -z "$(ls -A "$WORKDIR" 2>/dev/null)" ]; then
+          echo "ERROR: workspace vacío; no se pudo obtener código ni por artifact ni por checkout" >&2
+          exit 2
+        fi
+
+   
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+   
+    - name: Run OWASP Dependency-Check
+      id: run-dc
+      continue-on-error: true
+      uses: dependency-check/Dependency-Check_Action@main
+      with:
+        project: ${{ steps.repo-parser.outputs.name }}
+        path: ${{ steps.prepare-workdir.outputs.workdir }}
+        format: 'JSON,HTML'
+        args: >
+          --enableRetired
+          --enableExperimental
+          --out ${{ steps.prepare-workdir.outputs.workdir }}/dc-report
+          --failOnCVSS 0
+
+   
+    - name: Collect report paths
+      id: collect-reports
+      run: |
+        set -euo pipefail
+        REPORT_DIR="${{ steps.prepare-workdir.outputs.workdir }}/dc-report"
+        JSON="$REPORT_DIR/dependency-check-report.json"
+        HTML="$REPORT_DIR/dependency-check-report.html"
+
+        mkdir -p "$REPORT_DIR"
+
+        # Si el action falló, crear JSON mínimo para no romper pasos posteriores
+        if [ ! -s "$JSON" ]; then
+          echo '{"dependencyCheckError": true, "dependencies": []}' > "$JSON"
+        fi
+
+        # HTML puede que no exista; no es crítico
+        if [ ! -s "$HTML" ]; then
+          echo "<html><body><h1>Dependency-Check report</h1><p>No HTML generated.</p></body></html>" > "$HTML"
+        fi
+
+        echo "json=$JSON" >> $GITHUB_OUTPUT
+        echo "html=$HTML" >> $GITHUB_OUTPUT
+        echo "dir=$REPORT_DIR" >> $GITHUB_OUTPUT
+
+   
+    - name: Upload report to DefectDojo
+      env:
+        DD_URL: ${{ secrets.DD_URL }}
+        DD_TOKEN: ${{ secrets.DD_TOKEN }}
+        PRODUCT_NAME: ${{ steps.repo-parser.outputs.name }}
+        REPORT_FILE: ${{ steps.collect-reports.outputs.json }}
+      run: |
+        set -euo pipefail
+        echo "========================================"
+        echo "UPLOADING DEPENDENCY-CHECK REPORT TO DEFECTDOJO"
+        echo "========================================"
+        echo "Product: $PRODUCT_NAME"
+        echo "Report file: $REPORT_FILE"
+
+        if [ ! -f "$REPORT_FILE" ]; then
+          echo "ERROR: Report file not found: $REPORT_FILE" >&2
+          exit 1
+        fi
+
+        RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+          -H "Authorization: Token $DD_TOKEN" \
+          -F "file=@$REPORT_FILE" \
+          -F "scan_type=Dependency Check Scan" \
+          -F "product_name=$PRODUCT_NAME" \
+          -F "product_type_name=Testing" \
+          -F "engagement_name=JS Security - Dependency-Check" \
+          -F "test_title=OWASP Dependency-Check Findings" \
+          -F "auto_create_context=true" \
+          -F "close_old_findings=true" \
+          -F "scan_date=$(date -I)" \
+          "$DD_URL/api/v2/reimport-scan/")
+
+        HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+        BODY=$(echo "$RESPONSE" | sed '$d')
+
+        echo ""
+        echo "Response status: $HTTP_CODE"
+
+        if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+          echo "✓ Successfully uploaded to DefectDojo"
+          echo "$BODY" | jq '.' 2>/dev/null || echo "$BODY"
+        else
+          echo "✗ Failed to upload to DefectDojo"
+          echo "$BODY"
+          exit 1
+        fi
+
+   
+    - name: Save report artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: dependency-check-report-${{ inputs.src_repo_slug }}
+        path: |
+          ${{ steps.collect-reports.outputs.json }}
+          ${{ steps.collect-reports.outputs.html }}
+        retention-days: 7
+        if-no-files-found: warn
+
+   
+    - name: Print Summary
+      if: always()
+      run: |
+        echo ""
+        echo "══════════════════════════════════════════════════"
+        echo "OWASP Dependency-Check Analysis Summary"
+        echo "══════════════════════════════════════════════════"
+        echo ""
+        echo "Project: ${{ steps.repo-parser.outputs.name }}"
+        echo "Branch:  ${{ inputs.scan_branch }}"
+        echo "Reports: ${{ steps.collect-reports.outputs.dir }}"
+        echo ""
+        echo "JSON:    ${{ steps.collect-reports.outputs.json }}"
+        echo "HTML:    ${{ steps.collect-reports.outputs.html }}"
+        echo "══════════════════════════════════════════════════"
